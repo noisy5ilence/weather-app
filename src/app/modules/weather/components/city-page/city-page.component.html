@@ -1,0 +1,41 @@
+<div class="go-back">
+  <a routerLink="/" mat-fab color="primary">
+    <mat-icon aria-label="Example icon-button with a heart icon">keyboard_backspace</mat-icon>
+  </a>
+</div>
+<mat-card>
+  <ng-container *ngIf="resolvedForcast$ | async as forcast">
+    <mat-card-title>
+      <div class="weather-wrapper">
+        {{ forcast?.city?.name }}
+        <button 
+          mat-raised-button
+          (click)='addToFavorite(forcast?.city)'
+          color="primary" 
+          *ngIf='!isFavoriteCity'>
+          Add to favorite
+        </button>
+        <button
+          mat-icon-button 
+          *ngIf='isFavoriteCity'
+          (click)='removeFromFavorite(forcast?.city)'>
+          <mat-icon>star</mat-icon>
+        </button>
+      </div>
+    </mat-card-title>
+    <br>
+    <ng-container *ngFor='let day of forcast?.list'>
+        <mat-card-content>
+          <div class="weather-wrapper">
+            {{ getDateFromMilliseconds(day?.dt) | date }}
+            <img [src]="'http://openweathermap.org/img/w/' + day?.weather[0].icon + '.png'" alt="Weather icon">
+            <span>
+              {{ day?.weather[0]?.description }}
+            </span>
+            <span>{{ day?.main?.temp }} &#8451;</span>
+          </div>
+        </mat-card-content>
+        <br>
+    </ng-container>
+  </ng-container>
+</mat-card>

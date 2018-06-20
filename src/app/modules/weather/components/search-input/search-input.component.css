@@ -1,0 +1,8 @@
+.mat-form-field {
+  width: 100%;
+}
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

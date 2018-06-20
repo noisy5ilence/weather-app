@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-subtitle>
+    <div class="favorite-city-wrapper">
+      <a [routerLink]="favoriteCity?.id">{{ favoriteCity?.name }}</a>
+      
+      <span>
+        {{ favoriteCity?.main.temp }} &#8451;
+      </span>
+      <button 
+        (click)='removeFromFavorite(favoriteCity)'
+        *ngIf='isCityFavorite'
+        mat-icon-button color="primary">
+        <mat-icon>star</mat-icon>
+      </button>
+      <button 
+        (click)='addToFavorite(favoriteCity)'
+        *ngIf='!isCityFavorite'
+        mat-icon-button color="primary">
+        <mat-icon>star_border</mat-icon>
+      </button>
+    </div>
+  </mat-card-subtitle>
+</mat-card>

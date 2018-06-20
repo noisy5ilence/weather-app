@@ -1,0 +1,11 @@
+.weather-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.go-back {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
